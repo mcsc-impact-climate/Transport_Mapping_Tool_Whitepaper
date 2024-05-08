@@ -1,0 +1,94 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{titlesec}
+
+\definecolor{lightblue}{RGB}{84,167,220}
+\definecolor{gray}{RGB}{128,128,128}
+\definecolor{headerblue}{RGB}{52, 84, 147}
+
+\geometry{letterpaper, portrait, margin=1in, headheight=15pt, top=1in, headsep=0.25in}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{%
+  \begin{tikzpicture}[remember picture, overlay]
+    \node [rectangle, fill=lightblue, minimum width=\paperwidth, minimum height=0.6in, anchor=north] at (current page.north) {};
+  \end{tikzpicture}
+}
+\rhead{
+  \begin{tikzpicture}[remember picture, overlay]
+    \node [yshift=-0.45in, xshift=-1in, anchor=south east, font=\fontsize{9.5}{11}\selectfont\bfseries\ttfamily\color{black}] at (current page.north east) {\MakeUppercase{Short whitepaper title}};
+  \end{tikzpicture}
+}
+\lfoot{
+  \begin{tikzpicture}[remember picture, overlay]
+    \node [yshift=0.48in, xshift=1in, anchor=south west, font=\fontsize{9.5}{11}\selectfont\bfseries\ttfamily\color{black}] at (current page.south west) {\MakeUppercase{impactclimate.mit.edu | mcsc@mit.edu}};
+  \end{tikzpicture}
+}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[R]{\ttfamily\bfseries\fontsize{10}{12}\selectfont\color{black}{\thepage}}
+\setmainfont{Arial}
+\setmonofont{DejaVu Sans Mono}
+
+\titleformat{\section}
+  {\normalfont\Large\color{headerblue}}
+  {\thesection}
+  {1em}
+  {}
+
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{flushleft}
+    \includegraphics[width=\textwidth,height=0.7in,keepaspectratio]{logos/mcsc_logo.png} \\% Main logo
+    \vspace{0.5cm}
+    \Huge \@title \\
+    \vspace{0.2cm}
+    \Large \@author \\
+    \vspace{-1cm}
+    % Position the second logo on the top right of the first page
+    \begin{tikzpicture}[remember picture, overlay]
+      \node [anchor=north east, yshift=-0.6in, xshift=0.02in, inner sep=0pt] at (current page.north east) {\includegraphics[height=1.1in]{logos/mcsc_flair.png}}; % Adjust size as necessary
+    \end{tikzpicture}
+    \vspace{0.5cm}
+  \end{flushleft}
+}
+\makeatother
+
+\title{\textbf{Long Whitepaper Title That Spans Two Lines}}
+\author{Author Name}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+
+\section{Introduction}
+The introduction should frame the problem that the whitepaper addresses, provide background information, and state the main objectives of the study. It should also provide a brief overview of the structure of the document.
+
+\section{Methodology}
+This section should describe the methods used to gather and analyze data. Explain any theoretical frameworks, tools, or processes used in the research. This ensures the reproducibility of your results and helps establish credibility.
+
+\section{Results}
+Present the findings of the study here. Use graphs, tables, and charts to visually represent the data. Be clear and concise in your explanations, ensuring that the data supports your conclusions.
+
+\section{Discussion}
+Discuss the implications of your results in this section. Compare your findings with previous research, and highlight what is new or innovative about your own findings. Discuss the limitations of your research and suggest areas for further study.
+
+\section{Conclusion}
+Summarize the main points made in the paper and restate why they are important. Provide a clear statement of your conclusions and the implications of these conclusions. Offer recommendations based on the findings.
+
+\section{Appendices}
+Include any additional material that is relevant to the research but not central enough to include in the main body of the paper. This could include raw data, detailed methodologies, or additional graphs and charts.
+
+\section{References}
+Bibliography or references should be listed here. You can use a package like \texttt{biblatex} for bibliography management and formatting.
+
+\end{document}
