@@ -1,5 +1,8 @@
 # MCSC LaTeX Whitepaper Template
-This repo contains a template for MCSC whitepapers. You can either upload the template to [overleaf](https://www.overleaf.com) and edit it there, or download it to your local machine and edit it with your favorite LaTeX editor. 
+This repo contains a template for MCSC whitepapers. You can either upload the template to [overleaf](https://www.overleaf.com) and edit it there, or download it to your local machine and edit it with your favorite LaTeX editor.
+
+# XeLaTeX Dependency
+Note that the fontspec package used for this template requires the use of the XeLaTeX compiler (it will not compile with pdfLaTeX). 
 
 # Accessing the template
 
