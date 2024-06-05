@@ -1,0 +1,17 @@
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{flushleft}
+    \includegraphics[width=\textwidth,height=0.7in,keepaspectratio]{logos/mcsc_logo.png} \\% Main logo
+    \vspace{0.5cm}
+    \Huge \@title \\
+    \vspace{0.2cm}
+    \Large \@author \\
+    \vspace{-1cm}
+    % Position the second logo on the top right of the first page
+    \begin{tikzpicture}[remember picture, overlay]
+      \node [anchor=north east, yshift=-0.6in, xshift=0.02in, inner sep=0pt] at (current page.north east) {\includegraphics[height=1.1in]{logos/mcsc_flair.png}}; % Adjust size as necessary
+    \end{tikzpicture}
+    \vspace{0.5cm}
+  \end{flushleft}
+}
+\makeatother

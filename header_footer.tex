@@ -1,0 +1,18 @@
+% Detailed setup for fancyhdr and TikZ designs for header and footer
+\fancyhead[L]{%
+  \begin{tikzpicture}[remember picture, overlay]
+    \node [rectangle, fill=lightblue, minimum width=\paperwidth, minimum height=0.6in, anchor=north] at (current page.north) {};
+  \end{tikzpicture}
+}
+\rhead{
+  \begin{tikzpicture}[remember picture, overlay]
+    \node [yshift=-0.45in, xshift=-1in, anchor=south east, font=\fontsize{9.5}{11}\selectfont\bfseries\ttfamily\color{black}] at (current page.north east) {\MakeUppercase{Short whitepaper title}};
+  \end{tikzpicture}
+}
+\lfoot{
+  \begin{tikzpicture}[remember picture, overlay]
+    \node [yshift=0.48in, xshift=1in, anchor=south west, font=\fontsize{9.5}{11}\selectfont\bfseries\ttfamily\color{black}] at (current page.south west) {\MakeUppercase{impactclimate.mit.edu | mcsc@mit.edu}};
+  \end{tikzpicture}
+}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[R]{\ttfamily\bfseries\fontsize{10}{12}\selectfont\color{black}{\thepage}}
