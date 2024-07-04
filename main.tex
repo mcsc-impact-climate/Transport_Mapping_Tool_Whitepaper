@@ -12,6 +12,15 @@
 \usepackage{subcaption}
 \usepackage{url}
 \usepackage[backend=biber, style=numeric, citestyle=numeric, sorting=none]{biblatex}
+\usepackage{array} % For defining new column types
+\usepackage{booktabs} % For nicer horizontal lines
+\usepackage{titlesec}
+
+% Define subsubsubsection as an unnumbered, bold title
+\newcommand{\subsubsubsection}[1]{\vspace{1em}\noindent\textbf{#1}\vspace{1em}}
+
+% Define a new column type 'P' for text wrapping
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
 \addbibresource{references.bib}
 
 \definecolor{lightblue}{RGB}{84,167,220}
