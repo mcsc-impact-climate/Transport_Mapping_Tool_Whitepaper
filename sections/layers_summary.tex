@@ -1,10 +1,50 @@
 \section{Summary of Layers}
 \label{sec:layers}
-This section summarizes the layers of the mapping tool and their organization. 
+This section describes the types of geospatial features visualized in the Geo-FTADS tool, and how each type of feature is visualized. The available geospatial layers are then introduced, along with their data sources. For layers that synthesize multiple datasets, or whose derivation otherwise involves detailed methodology, the reader is directed either to later sections or separate publications that detail the methodology involved. Table \ref{tab:layers_summary} summarizes the available layers, along with the type of geospatial feature used to visualize each.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{P{8cm}P{5cm}} % Adjust the column widths as needed
+\toprule % Thicker top line
+\textbf{Data Layer} & \textbf{Geospatial Feature Type} \\ \midrule % Midrule for under header
+Freight flows (highway) & Highway \\
+\midrule % Thin line between rows
+Freight flows (regional) & Area \\
+\midrule % Thin line between rows
+Well-To-Wheel emissions associated with regional flows & Area \\
+\midrule % Thin line between rows
+Funded infrastructure projects & Area and Highway \\
+\midrule % Thin line between rows
+Charging and alternative fueling stations & Point \\
+\midrule % Thin line between rows
+Hydrogen production facilities & Point \\
+\midrule % Thin line between rows
+Locations of truck stops and principal ports & Point \\
+\midrule % Thin line between rows
+Demand charges & Area \\
+\midrule % Thin line between rows
+Grid emission intensity & Area \\
+\midrule % Thin line between rows
+Total cost of electric and diesel truck ownership & Area \\
+\midrule % Thin line between rows
+Total lifetime emissions of electric truck ownership & Area \\
+\midrule % Thin line between rows
+State-level incentives and regulations & Area \\
+\midrule % Thin line between rows
+Electricity demand by fully electrified trucking fleet & Area \\
+\midrule % Thin line between rows
+Available power capacity of the electrical grid & Area \\
+\midrule % Thin line between rows
+Pooled demand for truck stop charging & Point \\
+\bottomrule % Thicker bottom line
+\end{tabular}
+\caption{Summary of data layers available in the Geo-FTADS tool.}
+\label{tab:layers_summary}
+\end{table}
 
 \subsection{Feature Types and Visualization Methods}
 
-Layers of the mapping tool fall into one of the following categories: area, highway, and point features. Each feature can be visualized as a gradient with respect to an associated attribute. The mechanism for visualizing the gradient varies depending on the type of feature.
+The tool visualizes the available data layers as geospatial features, which fall into one of the following categories: area, highway, and point features. Each feature can be visualized as a gradient with respect to an associated attribute. The mechanism for visualizing the gradient varies depending on the type of feature.
 
 \subsubsection{Area Features}
 \textit{Area features} represent sets of areal regions separated by boundaries, such as US states. Attributes that can be visualized with respect to area features include commercial electricity price (visualized by state) and grid emission intensity (visualized by state or by balancing authority). Attributes are visualized by coloring the area of each region using a gradient from white (smallest attribute value) to solid red (largest attribute value). 
@@ -32,13 +72,22 @@ Fig. \ref{fig:area_features} shows two sample area features, and the right-hand 
 
 \subsubsection{Highway Features}
 
-\textit{Highway features} represent sets of connected line features (``links") that represent the U.S. highway system. Attributes such as the annual cargo mass carried over each link can be visualized by scaling the width of each link in proportion with the value of its associated attribute. Figure \ref{fig:highway_flows} illustrates the visualization of the U.S. interstate system with the tool. 
+\textit{Highway features}, such as the U.S. interstate highway system, are represented by a network of connected straight lines. Each straight line in the network, referred to as a ``link", is typically less than one mile long, and connects end-to-end with other links to form the highway, as illustrated in Figure \ref{fig:highway_links_visual}.
 
 \begin{figure}[ht]
-        \centering
-        \includegraphics[width=0.7\textwidth]{figures/highway_flows.png}
-        \caption{The U.S. interstate highway network, with a line width gradient used to visualize the annual cargo mass carried over each link.}
-        \label{fig:highway_flows}
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/highway_links_visual.png}
+    \caption{Illustration of highway links representing a curved section of highway.}
+    \label{fig:highway_links_visual}
+\end{figure}
+
+Attributes such as the annual cargo mass carried over each link can be visualized by scaling the width of each link in proportion with the value of its associated attribute. Figure \ref{fig:highway_flows} illustrates the visualization of the U.S. interstate system with the Geo-FTADS tool. 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/highway_flows.png}
+    \caption{The U.S. interstate highway network, with a line width gradient used to visualize the annual cargo mass carried over each link.}
+    \label{fig:highway_flows}
 \end{figure}
 
 \subsubsection{Point Features}
@@ -52,9 +101,9 @@ Fig. \ref{fig:area_features} shows two sample area features, and the right-hand 
         \label{fig:electrolyzer_facilities}
 \end{figure}
 
-\subsection{Freight Flows and Associated Well-To-Wheel Emissions}
+\subsection{Freight Flows}
 
-To help target transition efforts to regions and corridors with high truck utilization, freight flows are visualized using data from the Freight Analysis Framework \cite{faf5_2024} maintained by the U.S. Department of State. The freight flows can be visualized either between 132 regions of the US, referred to as ``FAF zones", or along highways. 
+To help target transition efforts to regions and corridors with high truck utilization, freight flows are visualized using data from the Freight Analysis Framework \cite{faf5_2024} maintained by the U.S. Department of Transportation. The freight flows can be visualized either between 132 regions of the US, referred to as ``FAF zones", or along highways. 
 
 \subsubsection{Highway Flows}
 Flows are visualized along each highway link using one of the following two link attributes: 1) annual flow of cargo carried over the link, or 2) the number of daily trips over the link. The annual flow of cargo carried over highway links in the U.S. interstate system is shown in Figure \ref{fig:highway_flows}.
@@ -81,12 +130,6 @@ Figure \ref{fig:freight_flows} shows sample visualizations of regional freight f
         \caption{Import Flows (all commodities)}
         \label{fig:imports}
     \end{subfigure}
-    \begin{subfigure}[b]{0.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figures/import_export_emissions.png}
-        \caption{Well-to-wheel emissions associated with import and export flows (all commodities)}
-        \label{fig:import_export_emissions}
-    \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
@@ -98,7 +141,16 @@ Figure \ref{fig:freight_flows} shows sample visualizations of regional freight f
     \label{fig:freight_flows}
 \end{figure}
 
-We have developed a methodology to combine the FAF5 data with fuel production and tailpipe emission intensities from the GREET model \cite{GREET_2022}, along with truck characteristics and operating conditions from the 2002 Vehicle Inventory and Use Survey \cite{VIUS_2002}, to evaluate approximate well-to-wheel emissions associated with interregional freight flows. Figure \ref{fig:freight_flows} shows some sample distributions of import and export flow densities between the FAF5 zones. 
+\subsection{Well-To-Wheel Emissions Associated with Regional Flows}
+
+We have developed a methodology to combine the FAF5 data with fuel production and tailpipe emission intensities from the GREET model \cite{GREET_2022}, along with truck characteristics and operating conditions from the 2002 Vehicle Inventory and Use Survey \cite{VIUS_2002}, to evaluate approximate well-to-wheel emissions associated with interregional freight flows. Figure \ref{fig:import_export_emissions} shows the estimated well-to-wheel emissions associated with both import and export flows between the FAF zones for all commodities. 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/import_export_emissions.png}
+    \caption{Well-to-wheel emissions associated with import and export flows (all commodities)}
+    \label{fig:import_export_emissions}
+\end{figure}
 
 Under the current condition in which the vast majority (>99\%) of ton-miles are carried by diesel trucks, the emission rates are roughly proportional to the freight flows. Future work is needed to investigate how freight flow emissions changes with respect to penetration of alternative energy carriers, in which case we expect regional effects (eg. the regional intensity of the electrical grid) to become more pronounced. 
 
@@ -106,11 +158,11 @@ Section \ref{sec:freight_flows} provides details on the methodology developed to
 
 \subsection{Infrastructure}
 
-The tool includes a variety of layers to visualize the locations and details of existing and planned infrastructure to support trucking fleets in transitioning to alternative energy carriers. 
+The Geo-FTADS tool includes a variety of layers to visualize the locations and details of existing and planned infrastructure to support trucking fleets in transitioning to alternative energy carriers. 
 
 \subsubsection{Funded Infrastructure Projects}
 
-Layers to visualize the locations of seven zero-emission medium- and heavy-duty vehicle infrastructure projects funded by the US DOE and DOT are included to support stakeholders in coordinating fleet transition planning with anticipated locations of public infrastructure. The funding was announced by the Biden-Harris administration in 2023 to support the construction of zero-emission corridors and expansion of EV charging to underserved communities \cite{biden_harris_2023}. 
+Layers to visualize the locations of seven zero-emission medium- and heavy-duty vehicle infrastructure projects funded by the US DOE and DOT are included to support stakeholders in coordinating fleet transition planning with anticipated locations of public infrastructure. The funding was announced by the Biden-Harris administration in 2023 to support the construction of zero-emission corridors and expansion of EV charging to underserved communities \cite{biden_harris_2023}. While some corridors, such as the Northeast EV Corridor \cite{NationalGridEVHighway} or the Houston to LA H$_2$ corridor \cite{H2LAAACOG2024}, target specific ZEV options, others such as the East Coast ZEV corridor \cite{CalstartZEVCorridor} aim to support both electric and hydrogen truck infrastructure. 
 
 Figure \ref{fig:infra_projects} shows the four funded corridors, along with a sample region being targeted for EV charging expansion. 
 
@@ -134,6 +186,19 @@ Current locations of public direct current fast charging (DCFC) and alternative 
 
 A limitation of this dataset is that it does not indicate the suitability of most stations for use by medium and heavy-duty vehicles. In particular, most DCFCs are likely only usable by light-duty vehicles. However, a high density of DCFCs in a given region may still provide a strong indication of regional support for installation of EV charging stations, and of local grid infrastructure and capacity to support high charging powers that will be needed for many trucking applications.  
 
+\subsubsection{Existing and Planned Hydrogen Production Facilities}
+
+Locations of hydrogen production facilities that are either planned, under construction, or operational can be visualized, along with their hydrogen production capacities, as point features to help assess current and anticipated regional availability of hydrogen to support deployment of hydrogen trucking fleets. Operational facilities include both electrolyzers and oil and chemical refineries that produce hydrogen as a by-product. However, for planned and under-construction facilities, data is only available for electrolyzers (not refinery production).
+
+Data on locations and production capacities was obtained from a 2023 DOE Hydrogen Program Record \cite{Hydrogen2023ElectrolyzerInstallations} for electrolyzer facilities, and from two complementary datasets \cite{H2ToolsCaptiveHydrogenProduction,H2ToolsMerchantHydrogenCapacities} from the Hydrogen Tools Portal \cite{H2Tools} for hydrogen produced at refineries. These data layers are shown in Figure \ref{fig:hydrogen_facilities}.
+
+\begin{figure}[ht]
+        \centering
+        \includegraphics[width=0.7\textwidth]{figures/hydrogen_production_facilities.png}
+        \caption{All hydrogen production facilities visualized on the geospatial mapping tool, along with their hydrogen production capacities.}
+        \label{fig:hydrogen_facilities}
+\end{figure}
+
 \subsubsection{Locations of Truck Stops and Principal Ports}
 
 Other point features available include the locations of truck stops and principal ports, which are intended to help infrastructure providers quickly locate potential hubs to target where vehicles already stop to refuel or load/unload cargo. 
@@ -143,12 +208,13 @@ Other point features available include the locations of truck stops and principa
 The tool includes several layers to support stakeholders in assessing transition costs and emissions. 
 
 \subsubsection{Commercial Electricity Price, Demand Charges and Grid Emission Intensity}
+\label{sec:elec_price_emissions_intensity}
 
 The commercial electricity price from the EIA \cite{EIA_2024} and grid emission intensity from the eGRIDs database \cite{eGRID_2022} can be visualized for different US states to view fundamental regional inputs for cost and emissions assessments. 
 
-Maximum utility demand charges at both the state and utility levels are evaluated using historical demand charge data compiled by the National Renewable Energy Lab (NREL) \cite{McLaren_2017}. Demand charges, which scale with a user's maximum instantaneous power demand over a given period \cite{FEMP_DemandCharge}, are especially relevant to trucking fleets due to the high powers (up to $\sim$1 MW \cite{Moorthy_2022}) that will be needed for $~$1h truck charging. The maximum charge at the utility level is obtained by finding the maximum of all charges associated with a given utility ID in the historical dataset. At the state level, there are options to visualize either the maximum, mean or median of historical maximum demand charges over all utilities that overlap with the state. 
+Demand charges, which scale with a user's maximum instantaneous power demand over a given period \cite{FEMP_DemandCharge}, are especially relevant to trucking fleets due to the high powers (up to $\sim$1 MW \cite{Moorthy_2022}) that will be needed for $~$1h truck charging. Maximum utility demand charges at both the state and utility levels are evaluated using historical maximum demand charge data compiled by the National Renewable Energy Lab (NREL) \cite{McLaren_2017}. The maximum charge at the utility level is obtained by finding the maximum of all charges associated with a given utility ID in the historical dataset. At the state level, there are options to visualize either the maximum, mean or median of historical maximum demand charges over all utilities that overlap with the state. 
 
-Figure \ref{fig:grid_costs} illustrates the demand charge and  commercial electricity price layers. The grid emission intensity is shown in \ref{fig:grid_co2_intensity_state}.
+Figure \ref{fig:grid_costs} illustrates the demand charge and commercial electricity price layers. The grid emission intensity is shown in \ref{fig:grid_co2_intensity_state}.
 
 \begin{figure}[ht]
     \centering
@@ -171,7 +237,9 @@ Figure \ref{fig:grid_costs} illustrates the demand charge and  commercial electr
 
 \subsubsection{Total Costs and Emissions of Electric and Diesel Truck Ownership}
 
-To support users in assessing cost and emission impacts of transitioning fleets to battery electric, layers are available for an adaptation of the EV truck model and analysis presented in \cite{Sader_2023}, which compares the total cost of ownership (TCO) and lifecycle emissions of EV vs. diesel long-haul trucking. The truck model presented in Ref. \cite{Sader_2023} is adapted to represent the Tesla Semi using data from PepsiCo's 2023 Tesla Semi pilot, which was undertaken in partnership with the Run on Less - Electric DEPOT demonstration \cite{NACFE_2023} launched by the North American Council for Freight Efficiency (NACFE) and the Rocky Mountain Institute (RMI). Flexibility has also been added to the model to represent a wider range of operating profiles. 
+To support users in assessing cost and emission impacts of transitioning fleets to battery electric, layers are available for an adaptation of the EV truck model and analysis presented in \cite{Sader_2023}, which compares the total cost of ownership (TCO) and well-to-wheel emissions of EV vs. diesel long-haul trucking over a 10-year truck lifespan. To remain policy-agnostic, the total cost of ownership currently does not account for federal tax credits or state-level incentives available to support fleets in transitioning to battery electric.
+
+The truck model presented in Ref. \cite{Sader_2023} is adapted to represent the Tesla Semi using data from PepsiCo's 2023 Tesla Semi pilot, which was undertaken in partnership with the Run on Less - Electric DEPOT demonstration \cite{NACFE_2023} launched by the North American Council for Freight Efficiency (NACFE) and the Rocky Mountain Institute (RMI). Flexibility has also been added to the model to represent a wider range of operating profiles. 
 
 Figure \ref{fig:truck_costs_emissions} shows a sample of these layers, and the methodology and assumptions used to adapt the model as described are discussed in more detail in Section \ref{sec:costs_emissions}.
 
@@ -180,7 +248,7 @@ Figure \ref{fig:truck_costs_emissions} shows a sample of these layers, and the m
     \begin{subfigure}[b]{0.49\textwidth}
         \centering
         \includegraphics[width=\textwidth]{figures/lifecycle_emissions.png}
-        \caption{Lifecycle emissions for EV trucking\newline}
+        \caption{Well-to-wheel emissions for EV trucking\newline}
         \label{fig:lifecycle_emissions}
     \end{subfigure}
     \hfill
@@ -190,15 +258,20 @@ Figure \ref{fig:truck_costs_emissions} shows a sample of these layers, and the m
         \caption{TCO premium for EV trucking, expressed relative to TCO for an equivalent diesel truck}
         \label{fig:ev_cost_premium}
     \end{subfigure}
-    \caption{Sample layers used to compare lifecycle emissions and total cost of ownership between battery electric and diesel trucking}
+    \caption{Sample layers used to compare well-to-wheel emissions and total cost of ownership between battery electric and diesel trucking}
     \label{fig:truck_costs_emissions}
 \end{figure}
+
+\subsection{State-level Incentives and Regulations}
+\label{sec:state_incentives_and_regulations}
+
+The number of incentives and regulations listed on the DOE's Alternative Fuels Data Center \cite{AFDCLaws} to support trucking fleets in transitioning to low-carbon energy carriers are visualized by state. Interactive features presented in Section \ref{sec:interactive_features} allow the user to filter for incentives or regulations separately, or for incentives and regulations targeting specific alternative energy carriers (eg. hydrogen or electricity) or support types (fuel use, infrastructure, or vehicle purchase). As discussed in Section \ref{sec:interactive_features}, the user can also click on specific states to bring up a list of available incentives and regulations matching the specified filters, along with links to more information on the Alternative Fuels Data Center website \cite{AFDCLaws}.
 
 \subsection{Electricity Demand and Capacity}
 
 To help stakeholders compare the grid's ability to support electrified charging demand at the state level, the tool allows users to visualize the total estimated state-level electricity demand associated with charging electric trucks, under a hypothetical scenario in which all present trucking operations along US interstates transition to battery electric. This demand for EV charging can be compared with various quantifiers of the overall state-level capacity and load on the grid to assess its potential impact. 
 
-Figure \ref{fig:ev_charging_demand_load} compares the state-level demand associated with electrified trucking with the total load from all power sources in 2022, indicating that charging demand for a fully electrified US trucking fleet would represent between 
+Figure \ref{fig:ev_charging_demand_load} compares the state-level demand associated with electrified trucking with the total load from all power sources in 2022, indicating that charging demand for a fully electrified US trucking fleet would represent between 2\% and 15\% of the estimated average excess energy capacity available on the grid over the course of a year, depending on the state. 
 
 \begin{figure}[ht]
     \centering

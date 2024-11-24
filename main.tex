@@ -15,9 +15,21 @@
 \usepackage{array} % For defining new column types
 \usepackage{booktabs} % For nicer horizontal lines
 \usepackage{titlesec}
+\usepackage{float}
+\usepackage{amssymb}  % for checkmark symbol
+\usepackage{lineno}
+\usepackage{xcolor}
+\usepackage{pifont}
+
+% Comment this line to remove line numbers
+\linenumbers
 
 % Define subsubsubsection as an unnumbered, bold title
 \newcommand{\subsubsubsection}[1]{\vspace{1em}\noindent\textbf{#1}\vspace{1em}}
+
+\definecolor{solidgreen}{RGB}{0,128,0} % Solid green color
+\newcommand{\greencheck}{\raisebox{0.2ex}{\color{solidgreen} \ding{51}}}
+\newcommand{\redx}{\raisebox{0.2ex}{\color{red} \textbf{X}}}
 
 % Define a new column type 'P' for text wrapping
 \newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
@@ -48,23 +60,23 @@
 \input{mcsc_logos.tex}
 
 % Title and authors
-\title{\textbf{Interactive geospatial mapping tool to support regional assessment of trucking fleet decarbonization opportunities}}
+\title{\textbf{Geospatial Fleet Transition Assessment and Decision Support Tool (Geo-FTADS)}}
 \author{Danika MacDonell and Micah Borrero}
 
 \begin{document}
 \maketitle
 \thispagestyle{fancy}
 
+\tableofcontents
+
 % Include sections
-\input{sections/introduction.tex}
-\input{sections/layers_summary.tex}
+%\input{sections/introduction.tex}
+%\input{sections/layers_summary.tex}
 \input{sections/interactive_features.tex}
-\input{sections/freight_flows.tex}
-\input{sections/cost_emissions_model.tex}
-\input{sections/energy_demand_and_capacity.tex}
-\input{sections/case_studies.tex}
-\input{sections/discussion.tex}
-\input{sections/appendices.tex}
-\input{sections/references.tex}
+%\input{sections/case_studies.tex}
+%\input{sections/freight_flows.tex}
+%\input{sections/cost_emissions_model.tex}
+%\input{sections/energy_demand_and_capacity.tex}
+%\input{sections/references.tex}
 
 \end{document}

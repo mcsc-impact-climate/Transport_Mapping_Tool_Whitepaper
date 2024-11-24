@@ -47,3 +47,29 @@ Each layer in the interface has a blue 'More' button to the right of it. Clickin
         \caption{Dropdown menus to customize details of the areal freight flow density.}
         \label{fig:popup_dropdown}
 \end{figure}
+
+\subsection{Click feature to explore underlying data}
+
+A click feature has been implemented for the 'State-level incentives and regulations' layer discussed in Section \ref{sec:state_incentives_and_regulations} that allows users to click on specific states to learn more about the specific regulations and incentives available in the state to support heavy duty vehicles in transitioning to alternative energy carriers. When viewing this layer, each state is highlighted in yellow when the cursor is hovered over it to indicate that the click feature is available. Clicking on a state generates a pop-up window that displays detailed information about the available incentives and regulations in the state, including links to additional details on the Department of Energy's Alternative Fuels Data Centre. 
+
+The incentives and regulations displayed in the pop-up are organized into the same categories (incentives/regulations, target, and fuel type) used to filter the data, and only those satisfying the applied filters are shown. 
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/click_feature_highlight.png}
+        \caption{Hover-over highlighting}
+        \label{fig:click_feature_highlight}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/click_feature_popup.png}
+        \caption{Pop-up on click}
+        \label{fig:click_feature_popup}
+    \end{subfigure}
+    \caption{Illustration of the click feature. Left: States are automatically highlighted in yellow when hovered over. Right: When a state is clicked, a window pops up to provide the user with additional information about the available incentives and regulations. }
+    \label{fig:click_feature}
+\end{figure}
+
